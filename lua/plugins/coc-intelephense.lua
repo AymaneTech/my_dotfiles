@@ -1,0 +1,3 @@
+return {
+	"yaegassy/coc-intelephense",
+}
