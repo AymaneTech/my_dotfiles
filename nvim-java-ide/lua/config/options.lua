@@ -20,7 +20,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.backup = false -- disable backup file creation
 vim.opt.clipboard = "unnamedplus" -- enable system clipboard access
-vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.conceallevel = 0 -- show concealed characters in markdown files
 vim.opt.fileencoding = "utf-8" -- set file encoding to UTF-8
 vim.opt.mouse = "a" -- enable mouse support
 vim.opt.showmode = false -- hide mode display
@@ -32,9 +32,9 @@ vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 100 -- set faster completion
 vim.opt.writebackup = false -- prevent editing of files being edited elsewhere
 vim.opt.cursorline = true -- highlight current line
+vim.opt.swapfile = false -- creates a swapfile
 
 -- Searching Behaviors
 vim.opt.hlsearch = true -- highlight all matches in search
 vim.opt.ignorecase = true -- ignore case in search
 vim.opt.smartcase = true -- match case if explicitly stated
-
