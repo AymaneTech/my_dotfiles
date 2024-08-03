@@ -27,3 +27,5 @@ function mvn-new-project() {
 }
 
 alias mvp="mvn-new-project"
+
+alias mvr="mvn -q -e clean install && clear && mvn -q -e exec:java"

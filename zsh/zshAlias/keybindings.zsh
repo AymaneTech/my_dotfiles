@@ -39,7 +39,7 @@ alias cl="clear"
 alias codes="cd /mnt/eb2f1159-9c91-4b6c-be64-cf3b468945ff/codes"
 
 # to download videos 
-alias download="cd /mnt/eb2f1159-9c91-4b6c-be64-cf3b468945ff/DIFramework &&  yt-dlp"
+alias download="cd /mnt/eb2f1159-9c91-4b6c-be64-cf3b468945ff/dddVideos &&  yt-dlp"
 
 # navigation
 cx() { cd "$@" && ll; }
