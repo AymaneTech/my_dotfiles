@@ -1,39 +1,23 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export ZSH="$HOME/.oh-my-zsh"
+export EDITOR='nvim'
 
-# set the directory i want to store zinit and plugins in;
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit.zinit.git"
-
-# download zinit , if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# source / load zinit
-source "${ZINIT_HOME}/zinit.zsh"
-
-
+#ZSH_THEME="xiong-chiamiov-plus"
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
-
-plugins=(
-	git
-	bundler
-	dotenv
-	npm
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-  spotify
+plugins=( 
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim'
+pokemon-colorscripts --no-title -s -r
 
-source ~/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# --------------------------------------------------------------------------------------
-# My personal configuration
 source ~/.zshAlias/sail.zsh
 source ~/.zshAlias/laravel.zsh
 source ~/.zshAlias/react.zsh
@@ -44,27 +28,8 @@ source ~/.zshAlias/git.zsh
 source ~/.zshAlias/auto-sug.zsh
 source ~/.zshAlias/keybindings.zsh
 
+alias br="cd /mnt/eb2f1159-9c91-4b6c-be64-cf3b468945ff/codes/briefs/a2/sprint-4/ebanking-basic-auth-spring-security && tn brief"
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-eval "$(zoxide init zsh)"
-#eval "$(oh-my-posh init zsh)"
-
-############ this one is to load home brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-neofetch
-
-alias kitty=" kitty --start-as fullscreen"
-
-export CLANG_FORMAT_STYLE=file:$HOME/.clang-format
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
 
-export PATH=$PATH:$HOME/go/bin
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
+fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
