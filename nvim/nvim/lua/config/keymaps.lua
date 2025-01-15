@@ -29,6 +29,14 @@ vim.keymap.set("n", "<leader>wh", ":split<cr>", { desc = "[W]indow Split [H]oriz
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left in visual mode" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode" })
 
+-- tmux & nvim navigation
+vim.keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { silent = true })
+vim.keymap.set("n", "<C-\\>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { silent = true })
+vim.keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { silent = true })
+
 -- Keymaps configuration
 local M = {}
 

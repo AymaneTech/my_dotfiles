@@ -2,11 +2,9 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			-- setup mason with default properties
 			require("mason").setup()
 		end,
 	},
-	-- mason lsp config utilizes mason to automatically ensure lsp servers you want installed are installed
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
@@ -22,7 +20,7 @@ return {
 		config = function()
 			-- ensure the java debug adapter is installed
 			require("mason-nvim-dap").setup({
-				ensure_installed = { "java-debug-adapter", "java-test" },
+				ensure_installed = { "java-debug-adapter", "java-test", "codelldb" },
 			})
 		end,
 	},
@@ -31,7 +29,17 @@ return {
 		"mfussenegger/nvim-jdtls",
 		dependencies = {
 			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
 		},
+		ft = "java",
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "java",
+				callback = function()
+					require("jdtls").start_or_attach(require("config.jdtls").setup_jdtls())
+				end,
+			})
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -61,6 +69,14 @@ return {
 				capabilities = capabilities,
 			})
 
+			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					-- Custom on_attach logic for Java if needed
+					-- You can add Java-specific keymaps or other configurations here
+				end,
+			})
+
 			-- Set vim motion for <Space> + c + h to show code documentation about the code the cursor is currently over if available
 			vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, { desc = "[C]ode [H]over Documentation" })
 			-- Set vim motion for <Space> + c + d to go where the code/variable under the cursor was defined
@@ -78,6 +94,12 @@ return {
 			vim.keymap.set(
 				"n",
 				"<leader>ci",
+				require("telescope.builtin").lsp_implementations,
+				{ desc = "[C]ode Goto [I]mplementations" }
+			)
+			vim.keymap.set(
+				"n",
+				"gd",
 				require("telescope.builtin").lsp_implementations,
 				{ desc = "[C]ode Goto [I]mplementations" }
 			)
